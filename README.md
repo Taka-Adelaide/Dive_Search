@@ -1,24 +1,41 @@
-# README
+# Dive Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+スキューバダイビングスポットの検索や情報を共有できるサイト
 
-Things you may want to cover:
+### サイトテーマ
+スキューバダイビングのスポットを探すことができる。
+天候、行き方。口コミも同じページから見ることができる。
 
-* Ruby version
+### テーマを選んだ理由
+スキューバダイビングのスポット探しは意外と手間がかかります。
+場所を見つけ、その情報を得て、行き方を検索するということだけでいくつものページを
+横断的に使って検索する必要があります。
+また、初めてダイビングに挑戦しようと思っても場所を見つけずらかったり、
+最適な情報を得られずに困ったという話を頻繁に聞きます。
+さらに、雑誌の休刊が相次ぎ、新しい情報を入手しにくくなっています。
+その中で、検索を簡単にしたり、情報を得やすい環境を整えたりしたいと思い作成しました。
 
-* System dependencies
 
-* Configuration
+### ターゲットユーザ
+ダイビングを楽しんでいる人
+これからダイビングに挑戦しようと思っている人
+ダイビングに興味がある人
 
-* Database creation
+### 主な利用シーン
+ダイビングのスポットを探すとき
+ダイビングに関する情報を得たいとき
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1OaLUC6IYWP-0IebcUsvAF1fwvEIXNTDgrbtj94K5M2w/edit?usp=sharing
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails (ver. 5.2.6)
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
