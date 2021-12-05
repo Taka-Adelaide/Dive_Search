@@ -36,7 +36,9 @@
 ダイビングに関する情報を得たいとき
 
 ## 設計書
-
+ワイヤーフレーム・ER図
+<br>
+https://drive.google.com/file/d/1RpUUNlswsm7hYxjXTGeehHiK0Qk8iGCE/view?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1OaLUC6IYWP-0IebcUsvAF1fwvEIXNTDgrbtj94K5M2w/edit?usp=sharing
