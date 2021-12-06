@@ -1,13 +1,24 @@
 Rails.application.routes.draw do
-  get 'comments/index'
-  get 'comments/show'
-  get 'comments/edit'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/unsubscribe'
-  get 'spots/show'
-  get 'homes/top'
-  get 'homes/about'
+
+  root to: "homes#top"
+  get "/about" => "homes#about"
+  resources :spots, only: [:show] do
+    resource :spot_favorites, only: [:create, :destroy]
+  end
+
+  resources :users, only: [:show, :edit, :update] do
+    collection do
+      get "unsubscribe"
+      patch "withdraw"
+    end
+
+    resources :comments, except: [:new]
+      resource :comment_favorites, only: [:create, :destroy]
+
+  end
+
+  get "/search" => "searches#search"
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
