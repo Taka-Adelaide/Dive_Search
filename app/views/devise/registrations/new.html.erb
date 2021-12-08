@@ -32,6 +32,10 @@
     </div>
 
     <div class="row">
+      <%= f.label "Cカードランク" %>
+      <%= f.select :rank, User.ranks.keys %>
+    </div>
+    <div class="row">
       <%= f.submit "新規登録" %>
     </div>
   <% end %>
