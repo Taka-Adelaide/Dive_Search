@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_114256) do
   create_table "spots", force: :cascade do |t|
     t.integer "area_id", null: false
     t.string "name", null: false
+    t.text "caption", null: false
     t.boolean "has_beach", default: false, null: false
     t.boolean "has_boat", default: false, null: false
     t.string "image_id"
