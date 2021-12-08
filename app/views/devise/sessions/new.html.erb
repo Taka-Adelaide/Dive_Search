@@ -4,25 +4,22 @@
   </div>
 
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <div class="row">
-    <%= f.label "メールアドレス" %>
-    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="row">
-    <%= f.label "パスワード" %>
-    <%= f.text_field :password, autocomplete: "current_password" %>
-  </div>
-  <div class="row">
-    <% if devise_mapping.rememberable? %>
-      <%= f.check_box :remember_me %>
-      <%= f.label "ログイン状態を維持する" %>
-  　<% end %>
-  </div>
-  <div class="row">
-    <%= f.submit "ログイン" %>
-  </div>
+    <div class="row">
+      <%= f.label "メールアドレス" %>
+      <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="row">
+      <%= f.label "パスワード" %>
+      <%= f.text_field :password, autocomplete: "current_password" %>
+    </div>
+    <div class="row">
+      <% if devise_mapping.rememberable? %>
+        <%= f.check_box :remember_me %>
+        <%= f.label "ログイン状態を維持する" %>
+    　<% end %>
+    </div>
+    <div class="row">
+      <%= f.submit "ログイン" %>
+    </div>
   <% end %>
-
 </div>
-
-
