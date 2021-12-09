@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <h4>新規会員登録</h4>
+  </div>
+
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <div class="row">
+      <%= f.label "お名前" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "海野太郎" %>
+    </div>
+    <div class="row">
+      <%= f.label "ユーザー名" %>
+      <%= f.text_field :user_name, placeholder: "ユーザー名" %>
+    </div>
+    <div class="row">
+      <%= f.label "メールアドレス" %><br />
+      <%= f.email_field :email, placeholder: "sample@email.com", autocomplete: "email" %>
+    </div>
+    <div class="field">
+      <%= f.label "パスワード（6文字以上）" %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "パスワード（確認用）" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="row">
+      <%= f.label "コメント" %>
+      <%= f.text_field :comment %>
+    </div>
+
+    <div class="row">
+      <%= f.label "Cカードランク" %>
+      <%= f.select :rank, User.ranks.keys %>
+    </div>
+    <div class="row">
+      <%= f.submit "新規登録" %>
+    </div>
+  <% end %>
+</div>
