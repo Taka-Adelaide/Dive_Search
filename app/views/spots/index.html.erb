@@ -11,15 +11,61 @@
             height: 400px;
           }
         </style>
-
         <script>
-          function initMap(){
-            let map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 35.025, lng: 139.351},
-            zoom: 8
+          var map;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 35.025, lng: 139.351},
+                zoom: 8
+            });
+
+            // マーカー複数個所
+            var markers = locations.map(function(location) {
+              return new google.maps.Marker({
+                position: location,
+                map: map,
+              });
             });
           }
+            // マーカー地点例
+            var locations = [
+              {lat: 35.665498, lng: 139.75964},
+              {lat: 35.681382, lng: 139.76608399999998},
+              {lat: 35.675069, lng: 139.763328}
+            ]
+
+            // マーカー一か所のみ
+            // var marker = new google.maps.Marker({
+            //   position: {lat: 35.665498, lng: 139.75964},
+            //   map: map
+            // });
+          // }
         </script>
+
+            <!--var markers = locations.map(function(location) {-->
+            <!--  return new google.maps.Marker({-->
+            <!--    position: location,-->
+            <!--    map: map,-->
+            <!--  });-->
+            <!--});-->
+            <!--}-->
+            <!--var locations = [-->
+            <!--        {lat: 35.665498, lng: 139.75964},-->
+            <!--        {lat: 35.681382, lng: 139.76608399999998},-->
+            <!--        {lat: 35.675069, lng: 139.763328}-->
+            <!--]-->
+        <!--</script>-->
+
+        <!--地図表示別パターン-->
+        <!--<script>-->
+        <!--  function initMap(){-->
+        <!--    let map = new google.maps.Map(document.getElementById('map'), {-->
+        <!--    center: {lat: 35.025, lng: 139.351},-->
+        <!--    zoom: 8-->
+        <!--    });-->
+        <!--  }-->
+        <!--</script>-->
+
       </div>
   </div>
   <div class="">
