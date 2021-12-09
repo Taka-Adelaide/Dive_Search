@@ -1,6 +1,63 @@
 <div class="container">
   <div class="row">
-    <div></div>
-    
+    <div class="col">
+      <h4><%= @spot.name %></h4>
+    </div>
+    <div class="col">
+      <% if @spot.has_beach %>
+        <p>ビーチあり</p>
+      <% else %>
+        <p>ビーチなし</p>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <% if @spot.has_boat %>
+        <p>ボートあり</p>
+      <% else %>
+        <p>ボートなし</p>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <% if @spot.for_beginners %>
+        <p>初心者も安心</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= @spot.caption %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div id="map"></div>
+      <div class="map">
+        <style>
+          #map{
+            height: 200px;
+          }
+        </style>
+        <script>
+          var map;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 35.025, lng: 139.351},
+                zoom: 8
+            });
+          }
+        </script>
+      </div>
+    </div>
+    <div class="col">
+      ルート表示
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      口コミ一覧<br>
+      spot_comment作成後
+    </div>
   </div>
 </div>

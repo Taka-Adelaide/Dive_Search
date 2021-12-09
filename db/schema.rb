@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_114256) do
     t.text "caption", null: false
     t.boolean "has_beach", default: false, null: false
     t.boolean "has_boat", default: false, null: false
+    t.boolean "for_beginners", default: false, null: false
     t.string "image_id"
     t.text "onsen"
     t.boolean "is_active", default: true, null: false
