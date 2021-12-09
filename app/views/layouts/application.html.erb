@@ -18,6 +18,11 @@
               Dive Search
             </a>
           </div>
+          <div class="row">
+            <% if user_signed_in? %>
+              こんにちは！<%= current_user.user_name %>さん
+            <% end %>
+          </div>
           <div class="col">
             <ul class="navbar-nav justify-content-end">
               <% if user_signed_in? %>

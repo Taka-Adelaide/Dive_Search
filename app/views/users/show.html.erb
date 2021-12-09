@@ -1,2 +1,26 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h5>ユーザー詳細</h5>
+      <%= @user.user_name %>
+      <br>
+      <%= @user.email %>
+      <br>
+      <%= @user.comment %>
+      
+      Cカードランク：<%= @user.rank %>
+
+      <div>
+        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-success btn-sm"%>
+      </div>
+    </div>
+    <div class="col-6">
+      <h5>口コミ一覧</h5>
+      <% @user.comments.each do |comment| %>
+        <%= comment %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

@@ -2,12 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root to: "homes#top"
-  get "/about" => "homes#about"
 
   devise_for :users
 
-  resources :spots, only: [:show] do
+  root to: "homes#top"
+  get "/about" => "homes#about"
+
+  resources :spots, only: [:index, :show] do
     resource :spot_favorites, only: [:create, :destroy]
   end
 

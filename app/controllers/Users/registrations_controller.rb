@@ -64,4 +64,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :user_name, :comment, :rank])
   end
+
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
 end
