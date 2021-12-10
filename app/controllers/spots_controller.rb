@@ -4,5 +4,6 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    gon.spot = @spot
   end
 end

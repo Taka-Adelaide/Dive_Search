@@ -5,7 +5,7 @@ ActiveAdmin.register Spot do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :area_id, :name, :caption, :has_beach, :has_boat, :for_beginners, :image_id, :onsen, :is_active
+  permit_params :area_id, :name, :caption, :has_beach, :has_boat, :for_beginners, :latitude, :longtitude, :image_id, :onsen, :is_active
   #
   # or
   #

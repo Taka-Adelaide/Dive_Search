@@ -36,15 +36,21 @@
       <div class="map">
         <style>
           #map{
-            height: 200px;
+            height: 400px;
           }
         </style>
         <script>
           var map;
           function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 35.025, lng: 139.351},
-                zoom: 8
+                center: {lat: gon.spot.latitude, lng: gon.spot.longtitude},
+                zoom: 10
+            });
+
+            // マーカー一か所のみ
+            var marker = new google.maps.Marker({
+              position: {lat: gon.spot.latitude, lng: gon.spot.longtitude},
+              map: map
             });
           }
         </script>
