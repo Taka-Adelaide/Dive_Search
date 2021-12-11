@@ -18,9 +18,14 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
+    @spots = Spot.all
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to root_path
   end
 
   def destroy
