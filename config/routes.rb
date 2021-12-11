@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       patch "withdraw"
     end
 
-    resources :comments, except: [:new]
+    resources :comments
       resource :comment_favorites, only: [:create, :destroy]
 
   end
