@@ -61,15 +61,25 @@
     </div>
   </div>
 
+  <div class="">
   <h5>口コミ一覧</h5>
-  <div class="row">
-    <% @comments.each do |comment| %>
+    <div class="row">
       <div class="col">
-        <%= comment.user.name %>
+        <%= link_to "口コミを投稿する", new_user_comment_path(current_user.id) %>
       </div>
-      <div class="col">
-        <%= comment.comment %>
-      </div>
-    <% end %>
+    </div>
+    <div class="row">
+      <% @comments.each do |comment| %>
+        <div class="col">
+          <%= comment.user.name %>
+        </div>
+        <div class="col">
+          <%= comment.comment %>
+        </div>
+        <% if comment.user == current_user %>
+          <%= link_to "コメントを編集する", edit_user_comment_path(current_user.id, comment.id) %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

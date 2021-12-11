@@ -1,4 +1,4 @@
 class CommentFavorite < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :comment, dependent: :destroy
+  belongs_to :user
+  belongs_to :comment
 end

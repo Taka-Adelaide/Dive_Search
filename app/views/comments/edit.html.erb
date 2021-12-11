@@ -25,4 +25,9 @@
       </div>
     </div>
   <% end %>
+  <div class="row">
+    <div class="button">
+      <%= link_to "削除する", user_comment_path(current_user.id, @comment), method: :delete %>
+    </div>
+  </div>
 </div>

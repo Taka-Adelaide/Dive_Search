@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to root_path
+    redirect_to spot_path(@comment.spot.id)
   end
 
   def show
@@ -25,10 +25,13 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to user_path(current_user.id)
   end
 
   private

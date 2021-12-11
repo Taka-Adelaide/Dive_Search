@@ -7,7 +7,8 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     gon.spot = @spot
-    
-    @comments = Comment.all
+
+    @comments = @spot.comments.all
+    @user = current_user
   end
 end
