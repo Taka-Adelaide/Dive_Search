@@ -60,10 +60,16 @@
       ルート表示
     </div>
   </div>
+
+  <h5>口コミ一覧</h5>
   <div class="row">
-    <div class="col">
-      口コミ一覧<br>
-      spot_comment作成後
-    </div>
+    <% @comments.each do |comment| %>
+      <div class="col">
+        <%= comment.user.name %>
+      </div>
+      <div class="col">
+        <%= comment.comment %>
+      </div>
+    <% end %>
   </div>
 </div>
