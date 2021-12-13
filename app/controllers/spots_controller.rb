@@ -9,13 +9,10 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     gon.spot = @spot
-
-    @comments = @spot.comments.all
-    @user = current_user
   end
 end
 
-# spot_index地域から検索のview元（ここに避難）
+# spot_index地域から検索のview元コード（ここに避難）
 # <% @areas.each do |area| %>
 # <%= area.name %>
 # <% area.spots.each do |spot| %>
