@@ -6,8 +6,8 @@
       <br>
       <%= @user.email %>
       <br>
-      <%= @user.comment %>
-      
+      <%= @user.profile %>
+
       Cカードランク：<%= @user.rank %>
 
       <div>
@@ -16,8 +16,10 @@
     </div>
     <div class="col-6">
       <h5>口コミ一覧</h5>
-      <% @user.comments.each do |comment| %>
-        <%= comment %>
+      <% @comments.each do |comment| %>
+        <%= comment.spot.name %>
+        <%= comment.comment %>
+        <%= link_to "編集する", edit_user_comment_path(current_user.id, comment.id) %>
       <% end %>
     </div>
   </div>

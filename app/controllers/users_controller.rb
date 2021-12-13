@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-
+    @comments = @user.comments.all
   end
 
   def edit
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  params.require(:user).permit(:name, :user_name, :comment, :rank)
+    params.require(:user).permit(:name, :user_name, :profile, :rank)
   end
 
 end
