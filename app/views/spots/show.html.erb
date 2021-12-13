@@ -76,14 +76,14 @@
         <div class="col">
           <%= comment.comment %>
         </div>
-        
+
         <div class="col">
           <% if comment.favorited_by?(current_user) %>
-            <%= link_to user_comment_favorites_path(comment), method: :delete do %>
+            <%= link_to comment_favorite_path(comment), method: :delete do %>
               ♥<%= comment.comment_favorites.count %>いいね
             <% end %>
           <% else %>
-            <%= link_to user_comment_favorites_path(comment), method: :post do %>
+            <%= link_to comment_favorites_path(comment), method: :post do %>
               ♡<%= comment.comment_favorites.count %>いいね
             <% end %>
           <% end %>
