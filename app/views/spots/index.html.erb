@@ -51,6 +51,23 @@
   </div>
   <div class="">
     <h4>地域から探す</h4>
+    <table>
+      <% @areas.each do |area| %>
+      <tr>
+        <td>
+          <%= area.name %>
+        </td>
+        <% area.spots.each do |spot| %>
+        <td>
+          <%= link_to spot_path(spot.id) do %>
+            <%= spot.name %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+    
   </div>
   <div class="">
     <h4>キーワードで探す</h4>
