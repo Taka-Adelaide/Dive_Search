@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_114256) do
     t.datetime "remember_created_at"
     t.string "user_name", null: false
     t.string "name", null: false
-    t.text "comment"
+    t.text "profile"
     t.string "profile_image_id"
     t.integer "rank", default: 0
     t.boolean "is_active", default: true, null: false
