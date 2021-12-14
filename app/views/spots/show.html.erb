@@ -3,11 +3,11 @@
     <div class="col">
       <h4><%= @spot.name %></h4>
     </div>
-    <p>お気に入り</p><%= @spot.spot_favorites.count %>件
+    
     <div class="col">
-      <id="spot_favorite_<%= @spot.id %>">
+      <div id="spot_favorite_<%= @spot.id %>">
         <%= render "spot_favorites/spot_favorite", spot: @spot %>
-      </id>
+      </div>
     </div>
 
     <div class="col">
