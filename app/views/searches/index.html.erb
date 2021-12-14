@@ -1,5 +1,5 @@
 <div class="container">
-  <%= @keyword %>の検索結果
+  <h4>"<%= @keyword %>"の検索結果</h4>
     <% @spots.each do |spot| %>
       <%= link_to spot_path(spot) do %>
         <%= spot.name %>
