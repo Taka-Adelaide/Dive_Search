@@ -3,6 +3,7 @@
     <div class="col">
       <h4><%= @spot.name %></h4>
     </div>
+    <p>お気に入り</p><%= @spot.spot_favorites.count %>件
     <div class="col spot_favorite">
       <%= render "spot_favorites/spot_favorite", spot: @spot %>
     </div>
@@ -84,6 +85,7 @@
         <div class="col comment_favorite">
           <%= render "comment_favorites/comment_favorite", comment: comment %>
         </div>
+        
         <% if comment.user == current_user %>
           <%= link_to "コメントを編集する", edit_user_comment_path(current_user.id, comment.id) %>
         <% end %>
