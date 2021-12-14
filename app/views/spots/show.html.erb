@@ -3,17 +3,8 @@
     <div class="col">
       <h4><%= @spot.name %></h4>
     </div>
-    <div class="col">
-      <p>お気に入り</p><%= @spot.spot_favorites.count %>件
-      <% if @spot.favorited_by?(current_user) %>
-        <%= link_to spot_spot_favorites_path(@spot), method: :delete do %>
-          お気に入り登録削除
-        <% end %>
-      <% else %>
-        <%= link_to spot_spot_favorites_path(@spot), method: :post do %>
-          お気に入り登録
-        <% end %>
-      <% end %>
+    <div class="col spot_favorite">
+      <%= render "spot_favorites/spot_favorite", spot: @spot %>
     </div>
 
     <div class="col">
@@ -90,10 +81,8 @@
           <%= comment.comment %>
         </div>
 
-        <div class="col">
-          <div class="comment_favorite">
-            <%= render "comment_favorites/comment_favorite", comment: comment %>
-          </div>
+        <div class="col comment_favorite">
+          <%= render "comment_favorites/comment_favorite", comment: comment %>
         </div>
         <% if comment.user == current_user %>
           <%= link_to "コメントを編集する", edit_user_comment_path(current_user.id, comment.id) %>
