@@ -1,10 +1,10 @@
 <div class="container">
   <h4>口コミ投稿</h4>
-  <%= form_with model: @comment, url: user_comments_path, local: true do |f| %>
+  <%= form_with model: @comment, url: spot_comments_path, local: true do |f| %>
     <div class="row">
       <div class="col">
         <%= f.label "スポット名" %>
-        <%= f.collection_select(:spot_id, @spots, :id, :name) %>
+        <%= f.collection_select(:spot_id, @spots, :id, :name, selected: @spot.id) %>
       </div>
     </div>
     <div class="row">

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
 
   resources :spots, only: [:index, :show] do
+    resources :comments, except: [:index]
     resource :spot_favorites, only: [:create, :destroy]
   end
 
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
       patch "withdraw"
     end
 
-    resources :comments, except: [:index]
+    # resources :comments, except: [:index]
       # resource :comment_favorites, only: [:create, :destroy]
 
   end
