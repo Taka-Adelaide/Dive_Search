@@ -15,25 +15,32 @@
         </div>
       <% end %>
     </div>
+
+    <div class="col">
+      <i class="fas fa-umbrella-beach">ビーチポイント</i>
+    </div>
     <div class="col">
       <% if @spot.has_beach %>
-        <p>ビーチあり</p>
+        <i class="far fa-circle">あり</i>
       <% else %>
-        <p>ビーチなし</p>
+        <i class="fas fa-times">なし</i>
       <% end %>
     </div>
 
     <div class="col">
+     <i class="fas fa-ship">ボートポイント</i>
+    </div>
+    <div class="col">
       <% if @spot.has_boat %>
-        <p>ボートあり</p>
+        <i class="far fa-circle">あり</i>
       <% else %>
-        <p>ボートなし</p>
+        <i class="fas fa-times">なし</i>
       <% end %>
     </div>
 
     <div class="col">
       <% if @spot.for_beginners %>
-        <p>初心者も安心</p>
+        <i class="far fa-thumbs-up">初心者も安心</i>
       <% end %>
     </div>
   </div>
@@ -82,24 +89,36 @@
         </div>
       <% end %>
     </div>
-    <div class="row">
-      <table>
-        <% @comments.each do |comment| %>
-          <tr>
-            <td><%= comment.user.name %></td>
-            <td><%= comment.comment %></td>
-            <% if user_signed_in? %>
-              <td id="comment_favorite_<%= comment.id %>">
-                <%= render "comment_favorites/comment_favorite", comment: comment %>
-              </td>
-            <% else %>
-              <td>
-                <%= comment.comment_favorites.count %>いいね
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+    <% @comments.each do |comment| %>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <%= link_to user_comment_path(comment) do %>
+                <%= attachment_image_tag comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
+              <% end %>
+            </div>
+            <div class="col">
+              <i class="fas fa-user"></i>
+              <%= comment.user.name %>
+            </div>
+            <div class="col">
+              <%= comment.comment %>
+            </div>
+            <div class="col">
+              <% if user_signed_in? %>
+                <div id="comment_favorite_<%= comment.id %>">
+                  <%= render "comment_favorites/comment_favorite", comment: comment %>
+                </div>
+              <% else %>
+                <div>
+                  <%= comment.comment_favorites.count %>いいね
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

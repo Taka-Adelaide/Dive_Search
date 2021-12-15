@@ -15,6 +15,11 @@ class CommentsController < ApplicationController
   end
 
   def show
+    @comment = Comment.find(params[:id])
+    @user = @comment.user
+    @spot = @comment.spot
+    
+    @comments = Comment.all
   end
 
   def edit

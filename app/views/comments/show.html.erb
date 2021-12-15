@@ -1,6 +1,60 @@
 <div class="container">
-  <h4>口コミ</h4>
+  <h4>口コミ・レビュー</h4>
   <div class="row">
-    <div class="col"></div>
+    <div class="col"><h5><%= @spot.area.name %></h5></div>
+    <div class="col"><h5><%= @spot.name %></h5></div>
   </div>
+  <div class="row">
+    <div class="col">
+      ユーザー画像
+    </div>
+    <div class="col">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= attachment_image_tag @comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
+    </div>
+    <div class="col">
+      <%= @comment.comment %>
+    </div>
+  </div>
+
+  <h5>その他の口コミ・レビュー</h5>
+  <% @comments.each do |comment| %>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <%= link_to user_comment_path(comment) do %>
+              <%= attachment_image_tag comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
+            <% end %>
+          </div>
+          <div class="col">
+            <i class="fas fa-user"></i>
+            <%= comment.user.name %>
+          </div>
+          <div class="col">
+            <%= comment.spot.area.name %>
+            <%= comment.spot.name %>
+          </div>
+          <div class="col">
+            <%= comment.comment %>
+          </div>
+          <div class="col">
+            <% if user_signed_in? %>
+              <div id="comment_favorite_<%= comment.id %>">
+                <%= render "comment_favorites/comment_favorite", comment: comment %>
+              </div>
+            <% else %>
+              <div>
+                <%= comment.comment_favorites.count %>いいね
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
