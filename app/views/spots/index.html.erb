@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="">
+    <h4>Search</h4><small>スポットを探す</small>
+  </div>
+  <div class="">
+    <h4>地図から探す</h4>
+      <div id="map"></div>
+      <div class="map">
+        <style>
+          #map{
+            height: 400px;
+          }
+        </style>
+        <script>
+          let map;
+          let marker = [];
+          let infoWindow = [];
+          let spots = gon.spots;
+
+          function initMap(){
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 35.025, lng: 139.351},
+                zoom: 8
+            });
+
+            for (let i = 0; i < spots.length; i++) {
+              let id = spots[i]['id']
+
+              markerLatLng = new google.maps.LatLng({
+                lat: spots[i]["latitude"],
+                lng: spots[i]["longtitude"]
+              });
+
+              marker[i] = new google.maps.Marker({
+                position: markerLatLng,
+                map: map
+              });
+
+              // 吹き出し表示
+              infoWindow[i] = new google.maps.InfoWindow({
+                content: `<a href="/spots/${id}">${spots[i].name}</a>`
+              });
+
+              marker[i].addListener("click", function(){
+                infoWindow[i].open(map, marker[i]);
+              });
+            }
+          }
+        </script>
+      </div>
+  </div>
+  <div class="">
+    <h4>地域から探す</h4>
+    <table>
+      <% @areas.each do |area| %>
+      <tr>
+        <td>
+          <%= area.name %>
+        </td>
+        <% area.spots.each do |spot| %>
+        <td>
+          <%= link_to spot_path(spot.id) do %>
+            <%= spot.name %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+
+  </div>
+  <div class="">
+    <h4>キーワードで探す</h4>
+    <div class="">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <div class="col">
+          <%= f.text_field :keyword %>
+        </div>
+        <div class="col">
+          <%= f.submit "検索" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

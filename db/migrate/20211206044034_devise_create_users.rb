@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :user_name, null: false
       t.string :name, null: false
-      t.text :comment
+      t.text :profile
       t.string :profile_image_id
       t.integer :rank, default: 0
       t.boolean :is_active, null: false, default: true

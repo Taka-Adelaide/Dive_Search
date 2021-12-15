@@ -80,3 +80,5 @@ gem 'dotenv-rails'
 gem 'rubocop'
 gem 'pry-byebug'
 gem 'bullet'
+
+gem 'gon'

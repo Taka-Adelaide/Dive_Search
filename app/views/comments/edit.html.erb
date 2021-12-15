@@ -1,0 +1,33 @@
+<div class="container">
+  <h4>口コミ編集</h4>
+  <%= form_with model: @comment, url: user_comment_path, method: :patch, local: true do |f| %>
+    <div class="row">
+      <div class="col">
+        <%= f.label "スポット名" %>
+        <%= f.collection_select(:spot_id, @spots, :id, :name) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label "本文" %>
+        <%= f.text_field :comment %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label "画像" %>
+        <%= f.attachment_field :image %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.submit "編集する" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="button">
+      <%= link_to "削除する", user_comment_path(current_user.id, @comment), method: :delete %>
+    </div>
+  </div>
+</div>
