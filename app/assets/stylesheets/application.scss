@@ -16,3 +16,36 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
+ #content {
+  // height: 100vh;
+  // width: 100%;
+ }
+
+ main {
+  padding-top: 68px;
+  padding-bottom: 72px;
+ }
+
+ header {
+  border-bottom: 2px solid #00bfff;
+ }
+
+ .navbar-link {
+  margin-left: 5px;
+ }
+
+
+
+footer {
+ border-top: 2px solid #00bfff;
+ padding-top: 15px;
+ padding-bottom: 15px;
+ text-align: center;
+}

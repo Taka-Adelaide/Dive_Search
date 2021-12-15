@@ -6,6 +6,7 @@
     <h4>地図から探す</h4>
       <div id="map"></div>
       <div class="map">
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["gmap_API_key"] %>&callback=initMap" async defer></script>
         <style>
           #map{
             height: 400px;
