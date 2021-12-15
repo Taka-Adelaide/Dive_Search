@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get "/about" => "homes#about"
+  get "/comments" => "comments#index", as: "comments"
   post "/comments/:id/comment_favorites" => "comment_favorites#create", as: "comment_favorites"
   delete "/comments/:id/comment_favorites" => "comment_favorites#destroy", as: "comment_favorite"
+
 
   resources :spots, only: [:index, :show] do
     resource :spot_favorites, only: [:create, :destroy]
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
       patch "withdraw"
     end
 
-    resources :comments
+    resources :comments, except: [:index]
       # resource :comment_favorites, only: [:create, :destroy]
 
   end

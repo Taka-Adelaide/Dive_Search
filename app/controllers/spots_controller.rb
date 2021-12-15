@@ -4,8 +4,8 @@ class SpotsController < ApplicationController
     gon.spots = @spots
 
     @areas = Area.all
-    
-    
+
+
   end
 
   def show
@@ -14,6 +14,8 @@ class SpotsController < ApplicationController
 
     @comments = @spot.comments.all
     @user = current_user
+
+    
   end
 end
 
