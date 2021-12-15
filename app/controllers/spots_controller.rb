@@ -15,7 +15,7 @@ class SpotsController < ApplicationController
     @comments = @spot.comments.all
     @user = current_user
 
-    
+
   end
 end
 

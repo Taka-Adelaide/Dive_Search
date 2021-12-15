@@ -34,7 +34,7 @@
         <tr>
           <td class="col-8"><%= comment.comment %></td>
           <td class="col-2">♥<%= comment.comment_favorites.count %>いいね</td>
-          <td class="col-2"><%= link_to "編集する", edit_user_comment_path(current_user.id, comment.id) %></td>
+          <td class="col-2"><%= link_to "編集する", edit_spot_comment_path(comment.spot.id, comment.id) %></td>
         </tr>
       </table>
       <% end %>

@@ -85,7 +85,7 @@
     <div class="row">
       <% if user_signed_in? %>
         <div class="col">
-          <%= link_to "口コミを投稿する", new_user_comment_path(current_user.id) %>
+          <%= link_to "口コミを投稿する", new_spot_comment_path(@spot) %>
         </div>
       <% end %>
     </div>
@@ -94,7 +94,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <%= link_to user_comment_path(comment) do %>
+              <%= link_to spot_comment_path(@spot, comment.id) do %>
                 <%= attachment_image_tag comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
               <% end %>
             </div>

@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    @spot = Spot.find(params[:spot_id])
     @spots = Spot.all
+
   end
 
   def create
@@ -18,12 +20,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @user = @comment.user
     @spot = @comment.spot
-    
+
     @comments = Comment.all
   end
 
   def edit
     @comment = Comment.find(params[:id])
+    @spot = Spot.find(params[:spot_id])
     @spots = Spot.all
   end
 
