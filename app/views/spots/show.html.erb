@@ -3,11 +3,17 @@
     <div class="col">
       <h4><%= @spot.name %></h4>
     </div>
-    
+
     <div class="col">
-      <div id="spot_favorite_<%= @spot.id %>">
-        <%= render "spot_favorites/spot_favorite", spot: @spot %>
-      </div>
+      <% if user_signed_in? %>
+        <div id="spot_favorite_<%= @spot.id %>">
+          <%= render "spot_favorites/spot_favorite", spot: @spot %>
+        </div>
+      <% else %>
+        <div>
+          お気に入り登録<%= @spot.spot_favorites.count %>件
+        </div>
+      <% end %>
     </div>
     <div class="col">
       <% if @spot.has_beach %>
@@ -70,9 +76,11 @@
   <div class="">
   <h5>口コミ一覧</h5>
     <div class="row">
-      <div class="col">
-        <%= link_to "口コミを投稿する", new_user_comment_path(current_user.id) %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="col">
+          <%= link_to "口コミを投稿する", new_user_comment_path(current_user.id) %>
+        </div>
+      <% end %>
     </div>
     <div class="row">
       <table>
@@ -80,9 +88,15 @@
           <tr>
             <td><%= comment.user.name %></td>
             <td><%= comment.comment %></td>
-            <td id="comment_favorite_<%= comment.id %>">
-              <%= render "comment_favorites/comment_favorite", comment: comment %>
-            </td>
+            <% if user_signed_in? %>
+              <td id="comment_favorite_<%= comment.id %>">
+                <%= render "comment_favorites/comment_favorite", comment: comment %>
+              </td>
+            <% else %>
+              <td>
+                <%= comment.comment_favorites.count %>いいね
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </table>
