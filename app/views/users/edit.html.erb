@@ -29,8 +29,13 @@
     </div>
   <% end %>
   
-  <%= link_to "メールアドレス・パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-outline-info" %>
-  <%= link_to "退会を希望される方はこちら", unsubscribe_users_path, class: "btn btn-outline-dark" %>
+  <div class="row">
+    <%= link_to "メールアドレス・パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-outline-info" %>
+  </div>
+  <br>
+  <div class="row">
+    <%= link_to "退会を希望される方はこちら", unsubscribe_users_path, class: "btn btn-outline-dark" %>
+  </div>
 </div>
 
 
