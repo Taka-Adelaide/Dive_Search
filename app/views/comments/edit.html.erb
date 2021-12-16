@@ -1,33 +1,25 @@
 <div class="container">
-  <h4>口コミ編集</h4>
+  <div class="row">
+    <h4>口コミ編集</h4>
+    <p class="text-danger offset-1">＊部分は入力必須です</p>
+  </div>
+
   <%= form_with model: @comment, url: spot_comment_path, method: :patch, local: true do |f| %>
-    <div class="row">
-      <div class="col">
-        <%= f.label "スポット名" %>
-        <%= f.collection_select(:spot_id, @spots, :id, :name, selected: @spot.id) %>
-      </div>
+    <div class="form-group row">
+      <%= f.label "＊スポット名", class: "col-2" %>
+      <%= f.collection_select(:spot_id, @spots, :id, :name, selected: @spot.id) %>
     </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label "本文" %>
-        <%= f.text_field :comment %>
-      </div>
+    <div class="form-group row">
+      <%= f.label "＊口コミ本文", class: "col-2" %>
+      <%= f.text_area :comment, placeholder: "どんなダイビングでしたか？", class: "col-6" %>
     </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label "画像" %>
-        <%= f.attachment_field :image %>
-      </div>
+    <div class="form-group row">
+      <%= f.label "画像", class: "col-2" %>
+      <%= f.attachment_field :image %>
     </div>
-    <div class="row">
-      <div class="col">
-        <%= f.submit "編集する" %>
-      </div>
+    <div class="form-group row">
+      <%= f.submit "編集する", class: "btn btn-outline-success offset-3 my-auto" %>
+      <%= link_to "この口コミを削除する", spot_comment_path(@spot.id, @comment), method: :delete, class: "btn btn-outline-danger offset-3 my-auto" %>
     </div>
   <% end %>
-  <div class="row">
-    <div class="button">
-      <%= link_to "削除する", spot_comment_path(@spot.id, @comment), method: :delete %>
-    </div>
-  </div>
 </div>
