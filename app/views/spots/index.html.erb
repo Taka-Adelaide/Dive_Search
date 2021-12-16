@@ -69,19 +69,15 @@
       </div>
     <% end %>
   </div>
-  
+
   <div class="search">
     <h4>キーワードで探す</h4>
-    <div class="">
-      <%= form_with url: search_path, method: :get, local: true do |f| %>
-        <div class="col">
-          <%= f.text_field :keyword %>
-        </div>
-        <div class="col">
-          <%= f.submit "検索" %>
-        </div>
-      <% end %>
-    </div>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <div class="form-group row">
+        <%= f.text_field :keyword, class: "col-7 ml-3" %>
+        <%= f.submit "検索", class: "btn btn-outline-success col-2 ml-2" %>
+      </div>
+    <% end %>
   </div>
 
 </div>
