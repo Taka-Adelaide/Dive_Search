@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
 
     @areas = Area.all
 
-
+    @comments = Comment.all
   end
 
   def show
