@@ -22,39 +22,5 @@
   </div>
 
   <h5>その他の口コミ・レビュー</h5>
-  <% @comments.each do |comment| %>
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <%= link_to spot_comment_path(comment) do %>
-              <%= attachment_image_tag comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
-            <% end %>
-          </div>
-          <div class="col">
-            <i class="fas fa-user"></i>
-            <%= comment.user.name %>
-          </div>
-          <div class="col">
-            <%= comment.spot.area.name %>
-            <%= comment.spot.name %>
-          </div>
-          <div class="col">
-            <%= comment.comment %>
-          </div>
-          <div class="col">
-            <% if user_signed_in? %>
-              <div id="comment_favorite_<%= comment.id %>">
-                <%= render "comment_favorites/comment_favorite", comment: comment %>
-              </div>
-            <% else %>
-              <div>
-                <%= comment.comment_favorites.count %>いいね
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render "comments/index_large", comments: @comments %>
 </div>

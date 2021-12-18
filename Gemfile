@@ -82,3 +82,7 @@ gem 'pry-byebug'
 gem 'bullet'
 
 gem 'gon'
+
+group :production do
+  gem 'mysql2'
+end

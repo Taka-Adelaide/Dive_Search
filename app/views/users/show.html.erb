@@ -1,43 +1,35 @@
 <div class="container">
+  <div class="title">
+    <h2><%= @user.user_name %>さんのマイページ</h2>
+  </div>
   <div class="row">
     <div class="col-5">
       <h5>ユーザー詳細</h5>
       <table>
-        <tr>
-          <td>ユーザー名</td>
-          <td><%= @user.user_name %></td>
+        <tr class="border-bottom">
+          <td class="col-5">ユーザー名</td>
+          <td class="col-5"><%= @user.user_name %></td>
         </tr>
-        <tr>
-          <td>登録アドレス</td>
-          <td><%= @user.email %></td>
+        <tr class="border-bottom">
+          <td class="col-5">登録アドレス</td>
+          <td class="col-5"><%= @user.email %></td>
         </tr>
-        <tr>
-          <td>プロフィール</td>
-          <td><%= @user.profile %></td>
+        <tr class="border-bottom">
+          <td class="col-5">プロフィール</td>
+          <td class="col-5"><%= @user.profile %></td>
         </tr>
-        <tr>
-          <td>Cカードランク</td>
-          <td><%= @user.rank %></td>
+        <tr class="border-bottom">
+          <td class="col-5">Cカードランク</td>
+          <td class="col-5"><%= @user.rank %></td>
         </tr>
       </table>
       <div>
-        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-success btn-sm"%>
+        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-outline-success mt-3 ml-3"%>
       </div>
     </div>
     <div class="col-7">
       <h5>口コミ一覧</h5>
-      <% @comments.each do |comment| %>
-      <table>
-        <tr>
-          <td><%= comment.spot.name %></td>
-        </tr>
-        <tr>
-          <td class="col-8"><%= comment.comment %></td>
-          <td class="col-2">♥<%= comment.comment_favorites.count %>いいね</td>
-          <td class="col-2"><%= link_to "編集する", edit_spot_comment_path(comment.spot.id, comment.id) %></td>
-        </tr>
-      </table>
-      <% end %>
+      <%= render "comments/index_small", comments: @comments %>
     </div>
   </div>
 </div>
