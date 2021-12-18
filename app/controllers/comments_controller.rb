@@ -15,8 +15,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    redirect_to spot_path(@comment.spot.id)
+    if @comment.save
+      redirect_to spot_path(@comment.spot.id)
+    else
+      render :new
+    end
   end
 
   def show
