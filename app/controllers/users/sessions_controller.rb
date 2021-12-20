@@ -35,6 +35,7 @@ class Users::SessionsController < Devise::SessionsController
     return if !@user
 
     if @user.valid_password?(params[:user][:password]) && !@user.is_active
+      flash[:alert] = "退会済みのアカウントです。"
       redirect_to new_user_registration_path
     end
   end
