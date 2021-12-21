@@ -9,16 +9,19 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @spot = Spot.find(params[:spot_id])
     @spots = Spot.all
-
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @spot = Spot.find(params[:spot_id])
+
     if @comment.save
+      flash[:notice] = "コメントを投稿しました"
       redirect_to spot_path(@comment.spot.id)
     else
-      render :new
+      flash[:alert] = "コメントを入力してください"
+      redirect_to new_spot_comment_path(@spot)
     end
   end
 
@@ -38,14 +41,27 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    redirect_to user_path(current_user.id)
+    @spot = Spot.find(params[:spot_id])
+
+    if @comment.update(comment_params)
+      flash[:notice] = "コメントを編集しました"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:alert] = "入力してください"
+      redirect_to edit_spot_comment_path(@spot)
+    end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to user_path(current_user.id)
+    @spot = Spot.find(params[:spot_id])
+
+    if @comment.destroy
+      flash[:notice] = "コメントを削除しました"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:alert] = "コメントを削除できませんでした。もう一度試してください。"
+      redirect_to edit_spot_comment_path(@spot)
   end
 
   private
