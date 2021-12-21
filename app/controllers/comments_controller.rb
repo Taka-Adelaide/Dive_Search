@@ -62,6 +62,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "コメントを削除できませんでした。もう一度試してください。"
       redirect_to edit_spot_comment_path(@spot)
+    end
   end
 
   private
