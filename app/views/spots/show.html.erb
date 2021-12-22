@@ -1,55 +1,56 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4><%= @spot.name %></h4>
+      <div class="row">
+        <h4 class="col"><%= @spot.name %></h4>
+        <h5 class="col"><%= @spot.area.name %></h5>
+      </div>
+
+      <div class="col">
+        <% if user_signed_in? %>
+          <div id="spot_favorite_<%= @spot.id %>">
+            <%= render "spot_favorites/spot_favorite", spot: @spot %>
+          </div>
+        <% else %>
+          <div>
+            お気に入り☆<%= @spot.spot_favorites.count %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <i class="fas fa-umbrella-beach">ビーチポイント</i>
+      </div>
+      <div class="col">
+        <% if @spot.has_beach %>
+          <i class="far fa-circle">あり</i>
+        <% else %>
+          <i class="fas fa-times">なし</i>
+        <% end %>
+      </div>
+
+      <div class="col">
+       <i class="fas fa-ship">ボートポイント</i>
+      </div>
+      <div class="col">
+        <% if @spot.has_boat %>
+          <i class="far fa-circle">あり</i>
+        <% else %>
+          <i class="fas fa-times">なし</i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <% if @spot.for_beginners %>
+          <i class="far fa-thumbs-up">初心者も安心</i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <%= @spot.caption %>
+      </div>
     </div>
 
-    <div class="col">
-      <% if user_signed_in? %>
-        <div id="spot_favorite_<%= @spot.id %>">
-          <%= render "spot_favorites/spot_favorite", spot: @spot %>
-        </div>
-      <% else %>
-        <div>
-          お気に入り登録<%= @spot.spot_favorites.count %>件
-        </div>
-      <% end %>
-    </div>
-
-    <div class="col">
-      <i class="fas fa-umbrella-beach">ビーチポイント</i>
-    </div>
-    <div class="col">
-      <% if @spot.has_beach %>
-        <i class="far fa-circle">あり</i>
-      <% else %>
-        <i class="fas fa-times">なし</i>
-      <% end %>
-    </div>
-
-    <div class="col">
-     <i class="fas fa-ship">ボートポイント</i>
-    </div>
-    <div class="col">
-      <% if @spot.has_boat %>
-        <i class="far fa-circle">あり</i>
-      <% else %>
-        <i class="fas fa-times">なし</i>
-      <% end %>
-    </div>
-
-    <div class="col">
-      <% if @spot.for_beginners %>
-        <i class="far fa-thumbs-up">初心者も安心</i>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= @spot.caption %>
-    </div>
-  </div>
-  <div class="row">
     <div class="col">
       <div id="map"></div>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["gmap_API_key"] %>&callback=initMap" async defer></script>
@@ -75,9 +76,6 @@
           }
         </script>
       </div>
-    </div>
-    <div class="col">
-      ルート表示
     </div>
   </div>
 
