@@ -76,14 +76,17 @@ table td {
  margin-top: 40px;
 }
 
-// .caption {
-//  padding-top: 10px;
-//  padding-bottom: 0;
-// }
+.text {
+ line-height: 3;
+}
 
 // 差し色コーナー
 .text-imp {
  color: #ff8c00;
+}
+
+.text-sub {
+ color: #d2691e;
 }
 
 .border-imp {
