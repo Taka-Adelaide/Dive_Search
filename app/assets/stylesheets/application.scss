@@ -42,8 +42,6 @@
   margin-left: 5px;
  }
 
-
-
 footer {
  border-top: 2px solid #00bfff;
  padding-top: 10px;
@@ -76,4 +74,23 @@ table td {
 
 .content {
  margin-top: 40px;
+}
+
+// .caption {
+//  padding-top: 10px;
+//  padding-bottom: 0;
+// }
+
+// 差し色コーナー
+.text-imp {
+ color: #ff8c00;
+}
+
+.border-imp {
+ border-bottom: 1px solid #ff8c00;
+}
+
+.round-imp {
+ border: 1px solid #ff8c00;
+ border-radius: 5px;
 }

@@ -1,53 +1,63 @@
 <div class="container">
   <div class="row">
+    <h3 class="col-2"><%= @spot.name %></h3>
+    <h5 class="col-2"><%= @spot.area.name %></h5>
+
+    <div class="col-5 offset-2">
+      <% if user_signed_in? %>
+        <div id="spot_favorite_<%= @spot.id %>">
+          <%= render "spot_favorites/spot_favorite", spot: @spot %>
+        </div>
+      <% else %>
+        <div>
+          お気に入り☆<%= @spot.spot_favorites.count %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row content">
     <div class="col">
-      <div class="row">
-        <h4 class="col"><%= @spot.name %></h4>
-        <h5 class="col"><%= @spot.area.name %></h5>
+      <h5 class="text-imp">スポット情報</h5>
+
+      <div class="row border-imp">
+        <div class="col">
+          <p><i class="fas fa-umbrella-beach"></i>ビーチポイント</p>
+        </div>
+        <div class="col">
+          <% if @spot.has_beach %>
+            <p><i class="far fa-circle"></i>あり</p>
+          <% else %>
+            <p><i class="fas fa-times"></i>なし</p>
+          <% end %>
+        </div>
       </div>
 
-      <div class="col">
-        <% if user_signed_in? %>
-          <div id="spot_favorite_<%= @spot.id %>">
-            <%= render "spot_favorites/spot_favorite", spot: @spot %>
-          </div>
-        <% else %>
-          <div>
-            お気に入り☆<%= @spot.spot_favorites.count %>
-          </div>
-        <% end %>
+      <div class="row border-imp">
+        <div class="col">
+         <p><i class="fas fa-ship"></i>ボートポイント</p>
+        </div>
+        <div class="col">
+          <% if @spot.has_boat %>
+            <p><i class="far fa-circle"></i>あり</p>
+          <% else %>
+            <p><i class="fas fa-times"></i>なし</p>
+          <% end %>
+        </div>
       </div>
 
-      <div class="col">
-        <i class="fas fa-umbrella-beach">ビーチポイント</i>
-      </div>
-      <div class="col">
-        <% if @spot.has_beach %>
-          <i class="far fa-circle">あり</i>
-        <% else %>
-          <i class="fas fa-times">なし</i>
-        <% end %>
+      <div class="row border-imp ">
+        <div class="col">
+          <% if @spot.for_beginners %>
+            <p><i class="far fa-thumbs-up"></i>初心者も安心</p>
+          <% end %>
+        </div>
       </div>
 
-      <div class="col">
-       <i class="fas fa-ship">ボートポイント</i>
-      </div>
-      <div class="col">
-        <% if @spot.has_boat %>
-          <i class="far fa-circle">あり</i>
-        <% else %>
-          <i class="fas fa-times">なし</i>
-        <% end %>
-      </div>
-
-      <div class="col">
-        <% if @spot.for_beginners %>
-          <i class="far fa-thumbs-up">初心者も安心</i>
-        <% end %>
-      </div>
-
-      <div class="col">
-        <%= @spot.caption %>
+      <div class="row caption round-imp mt-4">
+        <div class="col">
+          <p><%= @spot.caption %></p>
+        </div>
       </div>
     </div>
 
@@ -79,45 +89,17 @@
     </div>
   </div>
 
-  <div class="">
-  <h5>口コミ一覧</h5>
-    <div class="row">
-      <% if user_signed_in? %>
-        <div class="col">
-          <%= link_to "口コミを投稿する", new_spot_comment_path(@spot) %>
-        </div>
-      <% end %>
-    </div>
-    <% @comments.each do |comment| %>
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <%= link_to spot_comment_path(@spot, comment.id) do %>
-                <%= attachment_image_tag comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
-              <% end %>
-            </div>
-            <div class="col">
-              <i class="fas fa-user"></i>
-              <%= comment.user.name %>
-            </div>
-            <div class="col">
-              <%= comment.comment %>
-            </div>
-            <div class="col">
-              <% if user_signed_in? %>
-                <div id="comment_favorite_<%= comment.id %>">
-                  <%= render "comment_favorites/comment_favorite", comment: comment %>
-                </div>
-              <% else %>
-                <div>
-                  <%= comment.comment_favorites.count %>いいね
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+  <div class="content">
+  <h5 class="text-imp">口コミ一覧</h5>
+    <% if user_signed_in? %>
+      <div class="col">
+        <%= link_to "口コミを投稿する", new_spot_comment_path(@spot), class: "btn btn-outline-success btn-sm" %>
       </div>
     <% end %>
+
+    <div class="mt-3">
+      <%= render "comments/index_large", comments: @comments %>
+    </div>
+
   </div>
 </div>
