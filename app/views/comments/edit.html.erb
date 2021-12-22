@@ -1,4 +1,10 @@
 <div class="container">
+  <div>
+    <% if @comment.errors.any? %>
+      エラーが発生しました
+    <% end %>
+  </div>
+
   <div class="row">
     <h4>口コミ編集</h4>
     <p class="text-danger offset-1">＊部分は入力必須です</p>

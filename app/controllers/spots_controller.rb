@@ -17,12 +17,3 @@ class SpotsController < ApplicationController
   end
 end
 
-# spot_index地域から検索のview元コード（ここに避難）
-# <% @areas.each do |area| %>
-# <%= area.name %>
-# <% area.spots.each do |spot| %>
-# <%= link_to spot_path(spot.id) do %>
-# <%= spot.name %>
-# <% end %>
-# <% end %>
-# <% end %>
