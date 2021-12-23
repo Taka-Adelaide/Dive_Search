@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, except: [:show]
 
   def show
     @user = current_user
@@ -36,5 +37,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :user_name, :profile, :rank)
   end
-
+  
+  def correct_user
+    user = User.find(params[:id])
+    if user != current_user
+      flash[:alert] = "権限がありません"
+    end
+  end
 end
