@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, except: [:show]
+  before_action :correct_user, only: [:edit, :update]
 
   def show
     @user = current_user
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       flash[:alert] = "編集できませんでした。もう一度試してください"
-      redirect_to request.referer
+      redirect_to edit_user_path(@user.id)
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :user_name, :profile, :rank)
   end
-  
+
   def correct_user
     user = User.find(params[:id])
     if user != current_user
