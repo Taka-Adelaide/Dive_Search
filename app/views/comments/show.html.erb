@@ -1,26 +1,42 @@
 <div class="container">
-  <h4>口コミ・レビュー</h4>
-  <div class="row">
-    <div class="col-2"><h5><%= @spot.area.name %></h5></div>
-    <div class="col-3"><h5><%= @spot.name %></h5></div>
+  <div class="title">
+    <h4>口コミ・レビュー</h4>
   </div>
+
   <div class="row">
-    <div class="col">
-      ユーザー画像
-    </div>
-    <div class="col">
-      <%= @user.name %>
+    <div class="col mb-3">
+      <h5 class="text-imp"><%= @spot.name %> （<%= @spot.area.name %>）</h5>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <%= attachment_image_tag @comment.image, :image, :fill, 10, 10, fallback: "no_image.jpg" %>
+
+
+
+  <div class="row border py-2">
+    <div class="col-2">
+      <%= attachment_image_tag @comment, :image, :fill, 160, 140, fallback: "no_image.jpg" %>
     </div>
-    <div class="col">
-      <%= @comment.comment %>
+    <div class="col-6">
+      <div class=""><%= @comment.comment %></div>
+    </div>
+    <div class="col-2 my-auto">
+      <div class=""><i class="fas fa-user"></i><%= @user.name %></div>
+      <% if user_signed_in? %>
+        <div id="comment_favorite_<%= @comment.id %>">
+          <%= render "comment_favorites/comment_favorite", comment: @comment %>
+        </div>
+      <% else %>
+        <div class="">
+          ♥<%= @comment.comment_favorites.count %>いいね
+        </div>
+      <% end %>
+
+      <div class=""><%= @comment.created_at %></div>
+    </div>
+    <div class="col-1 my-auto">
+      <%= link_to "編集", edit_spot_comment_path(spot_id: @spot, id: @comment), class: "btn btn-outline-success" %>
     </div>
   </div>
-  <%= link_to "編集する", edit_spot_comment_path(spot_id: @spot, id: @comment), class: "btn btn-outline-success" %>
+
 
   <div class="content">
     <h5>その他の口コミ・レビュー</h5>
