@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
 
   def show
     @user = current_user
@@ -12,8 +13,13 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      flash[:notice] = "ユーザー情報を編集しました"
+      redirect_to user_path(@user.id)
+    else
+      flash[:alert] = "編集できませんでした。もう一度試してください"
+      redirect_to edit_user_path(@user.id)
+    end
   end
 
   def unsubscribe
@@ -23,6 +29,7 @@ class UsersController < ApplicationController
     user = current_user
     user.update(is_active: false)
     reset_session
+    flash[:alert] = "退会しました。"
     redirect_to root_path
   end
 
@@ -31,4 +38,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :user_name, :profile, :rank)
   end
 
+  def correct_user
+    user = User.find(params[:id])
+    if user != current_user
+      flash[:alert] = "権限がありません"
+    end
+  end
 end

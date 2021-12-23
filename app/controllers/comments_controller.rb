@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @comments = Comment.all
@@ -70,4 +71,12 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:spot_id, :comment, :image)
   end
 
+  def correct_user
+    comment = Comment.find(params[:id])
+    user = comment.user
+    if user != current_user
+      flash[:alert] = "権限がありません"
+      redirect_to root_path
+    end
+  end
 end

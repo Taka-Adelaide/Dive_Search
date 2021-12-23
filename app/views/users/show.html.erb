@@ -4,31 +4,31 @@
   </div>
   <div class="row">
     <div class="col-5">
-      <h5>ユーザー詳細</h5>
+      <h5 class="text-imp">ユーザー詳細</h5>
       <table>
-        <tr class="border-bottom">
+        <tr class="border-imp">
           <td class="col-5">ユーザー名</td>
           <td class="col-5"><%= @user.user_name %></td>
         </tr>
-        <tr class="border-bottom">
+        <tr class="border-imp">
           <td class="col-5">登録アドレス</td>
           <td class="col-5"><%= @user.email %></td>
         </tr>
-        <tr class="border-bottom">
+        <tr class="border-imp">
           <td class="col-5">プロフィール</td>
           <td class="col-5"><%= @user.profile %></td>
         </tr>
-        <tr class="border-bottom">
+        <tr class="border-imp">
           <td class="col-5">Cカードランク</td>
           <td class="col-5"><%= @user.rank %></td>
         </tr>
       </table>
       <div>
-        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-outline-success mt-3 ml-3"%>
+        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-outline-success mt-5 ml-3"%>
       </div>
     </div>
     <div class="col-7">
-      <h5>口コミ一覧</h5>
+      <h5 class="text-imp">口コミ一覧</h5>
       <%= render "comments/index_small", comments: @comments %>
     </div>
   </div>
