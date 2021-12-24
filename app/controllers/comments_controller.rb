@@ -47,7 +47,8 @@ class CommentsController < ApplicationController
 
     if @comment.update(comment_params)
       flash[:notice] = "コメントを編集しました"
-      redirect_to user_path(current_user.id)
+      # redirect_to user_path(current_user.id)
+      redirect_to spot_comment_path(@comment)
     else
       flash[:alert] = "入力してください"
       redirect_to edit_spot_comment_path(@spot)
@@ -69,7 +70,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:spot_id, :comment, :image)
+    params.require(:comment).permit(:spot_id, :title, :comment, :image)
   end
 
   def correct_user

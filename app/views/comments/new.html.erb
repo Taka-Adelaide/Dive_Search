@@ -9,6 +9,10 @@
       <%= f.collection_select(:spot_id, @spots, :id, :name, selected: @spot.id) %>
     </div>
     <div class="form-group row mt-3">
+      <%= f.label "＊タイトル", class: "col-2" %>
+      <%= f.text_field :title, placeholder: "タイトル", class: "col-6" %>
+    </div>
+    <div class="form-group row mt-3">
       <%= f.label "＊口コミ本文", class: "col-2" %>
       <%= f.text_area :comment, placeholder: "どんなダイビングでしたか？", class: "col-6" %>
     </div>
