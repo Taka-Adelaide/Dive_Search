@@ -2,3 +2,10 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+
+  views:
+    pagination:
+      first: "最初"
+      previous: "前"
+      last: "最後"
+      next: "次"

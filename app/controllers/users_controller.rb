@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @comments = @user.comments.all
+    # @comments = @user.comments.all
+    @comments = @user.comments.page(params[:page]).reverse_order
   end
 
   def edit

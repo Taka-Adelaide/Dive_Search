@@ -30,6 +30,9 @@
     <div class="col-7">
       <h5 class="text-imp">口コミ一覧</h5>
       <%= render "comments/index_small", comments: @comments %>
+      <div class="d-flex justify-content-center">
+        <%= paginate @comments %>
+      </div>
     </div>
   </div>
 </div>

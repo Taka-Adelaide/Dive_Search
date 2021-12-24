@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @comments = Comment.all
+    # @comments = Comment.all
+    @comments = Comment.page(params[:page]).reverse_order
   end
 
   def new

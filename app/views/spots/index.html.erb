@@ -83,6 +83,7 @@
   <div class="search">
     <h4 class="text-imp">最新の口コミから探す</h4>
     <%= render "comments/index_large", comments: @comments %>
+    <%= paginate @comments %>
   </div>
 
 </div>
