@@ -3,10 +3,10 @@ class SpotsController < ApplicationController
     @spots = Spot.all
     gon.spots = @spots
 
-    @areas = Area.all
+    @areas = Area.includes(:spots)
 
     # @comments = Comment.all
-    @comments = Comment.page(params[:page]).reverse_order
+    @comments = Comment.includes(:user, :spot).page(params[:page]).reverse_order
   end
 
   def show
@@ -14,7 +14,7 @@ class SpotsController < ApplicationController
     gon.spot = @spot
 
     # @comments = @spot.comments.all
-    @comments = @spot.comments.page(params[:page]).reverse_order
+    @comments = @spot.comments.includes(:user).page(params[:page]).reverse_order
     @user = current_user
   end
 end
