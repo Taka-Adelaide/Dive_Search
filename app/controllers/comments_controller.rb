@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     # @comments = Comment.all
-    @comments = Comment.page(params[:page]).reverse_order
+    @comments = Comment.includes(:user, :spot).page(params[:page]).reverse_order
   end
 
   def new
@@ -32,7 +32,8 @@ class CommentsController < ApplicationController
     @user = @comment.user
     @spot = @comment.spot
 
-    @comments = Comment.all
+    # @comments = Comment.all
+    @comments = Comment.includes(:user, :spot)
   end
 
   def edit

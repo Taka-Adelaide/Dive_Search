@@ -32,7 +32,7 @@
       <div class=""><%= @comment.created_at %></div>
     </div>
     <div class="col-1 my-auto">
-      <% if @comment.user_id == current_user.id %>
+      <% if user_signed_in? && @comment.user_id == current_user.id %>
         <%= link_to "編集", edit_spot_comment_path(spot_id: @spot, id: @comment), class: "btn btn-outline-success" %>
       <% end %>
     </div>

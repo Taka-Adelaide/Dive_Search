@@ -11,7 +11,7 @@
       <div class="col-2 my-auto">
         <div class="">
           <i class="fas fa-map-marker-alt"></i>
-          <%= link_to spot_path(comment) do %>
+          <%= link_to spot_path(comment.spot.id) do %>
             <%= comment.spot.name %>
           <% end %>
         </div>
