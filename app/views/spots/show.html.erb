@@ -57,8 +57,13 @@
 
       <div class="row border-imp">
         <div class="col">
+         <p><i class="fas fa-universal-access"></i>レベル・難易度</p>
+        </div>
+        <div class="col">
           <% if @spot.for_beginners %>
             <p><i class="far fa-thumbs-up"></i>初心者も安心</p>
+          <% else %>
+            <p>中上級者向け</p>
           <% end %>
         </div>
       </div>
