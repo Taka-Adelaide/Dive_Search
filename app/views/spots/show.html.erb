@@ -46,7 +46,16 @@
         </div>
       </div>
 
-      <div class="row border-imp ">
+      <div class="row border-imp">
+        <div class="col">
+         <p><i class="fas fa-hot-tub"></i>温泉情報</p>
+        </div>
+        <div class="col">
+          <p><%= @spot.onsen %></p>
+        </div>
+      </div>
+
+      <div class="row border-imp">
         <div class="col">
           <% if @spot.for_beginners %>
             <p><i class="far fa-thumbs-up"></i>初心者も安心</p>
