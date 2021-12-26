@@ -56,3 +56,14 @@ ja:
     name: 名前
     created_at: 作成日
     updated_at: 更新日
+
+  enums:
+    user:
+      rank:
+        non_diver: "未登録"
+        OW: OW
+        AOW: AOW
+        RD: RD
+        MSD: MSD
+        DM: DM
+        IA: IA

@@ -34,7 +34,7 @@
 
     <div class="form-group">
       <%= f.label "Cカードランク", class: "col-3" %>
-      <%= f.select :rank, User.ranks.keys, class: "col-10" %>
+      <%= f.select :rank, User.ranks.keys.map {|k| [I18n.t("enums.user.rank.#{k}"), k]}, class: "col-10" %>
     </div>
     <div class="form-group">
       <%= f.submit "新規登録", class: "btn btn-outline-success offset-4" %>
