@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
 
   root to: "homes#top"
   get "/about" => "homes#about"
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
 
 
   resources :spots, only: [:index, :show] do
+    resources :comments, except: [:index]
     resource :spot_favorites, only: [:create, :destroy]
   end
 
@@ -22,7 +26,7 @@ Rails.application.routes.draw do
       patch "withdraw"
     end
 
-    resources :comments, except: [:index]
+    # resources :comments, except: [:index]
       # resource :comment_favorites, only: [:create, :destroy]
 
   end

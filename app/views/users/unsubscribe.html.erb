@@ -1,2 +1,26 @@
-<h1>Users#unsubscribe</h1>
-<p>Find me in app/views/users/unsubscribe.html.erb</p>
+<div class="container ">
+  <div class="warning">
+    <div class="row">
+      <div class="col d-flex justify-content-center ">
+        <h5>本当に退会しますか？</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <p>
+          退会すると会員情報やこれまでに投稿したコメントが閲覧できなくなります。<br>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col warning-btn d-flex justify-content-center">
+        <%= link_to "マイページに戻る", user_path(current_user), class: "btn btn-outline-success" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col warning-btn d-flex justify-content-center">
+        <%= link_to "退会する", withdraw_users_path, method: :patch, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

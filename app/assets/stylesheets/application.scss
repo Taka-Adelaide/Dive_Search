@@ -10,9 +10,99 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require_directory .
  *= require_self
  */
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
+ #content {
+  height: 100vh;
+  width: 100%;
+ }
+
+ main {
+  border-top: 2px solid #00bfff;
+  padding-top: 68px;
+  padding-bottom: 72px;
+ }
+
+ .navbar {
+  border-bottom: 2px solid #00bfff;
+ }
+
+ .navbar-link {
+  margin-left: 5px;
+ }
+
+footer {
+ border-top: 2px solid #00bfff;
+ padding-top: 10px;
+ // padding-bottom: 10px;
+ text-align: center;
+}
+
+.warning {
+ padding-top: 80px;
+}
+
+.warning-btn {
+ padding-bottom: 10px;
+}
+
+.title {
+ padding-top: 15px;
+ padding-bottom: 15px;
+}
+
+table td {
+ padding-top: 20px;
+ padding-bottom: 10px;
+}
+
+.search {
+ margin-top: 30px;
+ margin-bottom: 20px;
+}
+
+.content {
+ margin-top: 40px;
+}
+
+.text {
+ line-height: 3;
+}
+
+// 差し色コーナー
+.text-imp {
+ color: #ff8c00;
+}
+
+.text-sub {
+ color: #d2691e;
+}
+
+
+.border-imp {
+ border-bottom: 1px solid #ff8c00;
+}
+
+.round-imp {
+ border: 1px solid #ff8c00;
+ border-radius: 5px;
+}
+
+.pagination>li>a {
+ color: #ff8c00;
+}
+
+.pagination>li>a:hover {
+ color: #ff8c00;
+}

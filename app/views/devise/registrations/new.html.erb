@@ -1,42 +1,43 @@
 <div class="container">
   <div class="row">
     <h4>新規会員登録</h4>
+    <p class="text-danger offset-1">＊部分は入力必須です</p>
   </div>
 
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-    <div class="row">
-      <%= f.label "お名前" %>
-      <%= f.text_field :name, autofocus: true, placeholder: "海野太郎" %>
+    <div class="form-group">
+      <%= f.label "＊お名前", class: "col-3" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "海野太郎", class: "col-5" %>
     </div>
-    <div class="row">
-      <%= f.label "ユーザー名" %>
-      <%= f.text_field :user_name, placeholder: "ユーザー名" %>
+    <div class="form-group">
+      <%= f.label "＊ユーザー名", class: "col-3" %>
+      <%= f.text_field :user_name, placeholder: "ユーザー名", class: "col-5" %>
     </div>
-    <div class="row">
-      <%= f.label "メールアドレス" %><br />
-      <%= f.email_field :email, placeholder: "sample@email.com", autocomplete: "email" %>
+    <div class="form-group">
+      <%= f.label "＊メールアドレス", class: "col-3" %>
+      <%= f.email_field :email, placeholder: "sample@email.com", autocomplete: "email", class: "col-5" %>
     </div>
-    <div class="field">
-      <%= f.label "パスワード（6文字以上）" %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label "パスワード（確認用）" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="form-group">
+      <%= f.label "＊パスワード", class: "col-3" %>
+      <%= f.password_field :password, placeholder: "6文字以上", autocomplete: "new-password", class: "col-5" %>
     </div>
 
-    <div class="row">
-      <%= f.label "コメント" %>
-      <%= f.text_field :comment %>
+    <div class="form-group">
+      <%= f.label "＊パスワード", class: "col-3" %>
+      <%= f.password_field :password_confirmation, placeholder: "確認用（6文字以上）", autocomplete: "new-password", class: "col-5" %>
     </div>
 
-    <div class="row">
-      <%= f.label "Cカードランク" %>
-      <%= f.select :rank, User.ranks.keys %>
+    <div class="form-group">
+      <%= f.label "コメント", class: "col-3" %>
+      <%= f.text_field :profile, class: "col-5" %>
     </div>
-    <div class="row">
-      <%= f.submit "新規登録" %>
+
+    <div class="form-group">
+      <%= f.label "Cカードランク", class: "col-3" %>
+      <%= f.select :rank, User.ranks.keys.map {|k| [I18n.t("enums.user.rank.#{k}"), k]}, class: "col-10" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "新規登録", class: "btn btn-outline-success offset-4" %>
     </div>
   <% end %>
 </div>

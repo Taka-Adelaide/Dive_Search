@@ -1,36 +1,45 @@
 <div class="container">
   <div class="row">
     <h4>会員情報編集</h4>
+    <p class="text-danger offset-1">＊部分は入力必須です</p>
   </div>
 
   <%= form_with model: @user, url: user_path, local: true, method: :patch do |f| %>
-    <div class="row">
-      <%= f.label "お名前" %>
-      <%= f.text_field :name, autofocus: true, placeholder: "海野太郎" %>
+    <div class="form-group">
+      <%= f.label "＊お名前", class: "col-3" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "海野太郎", class: "col-5" %>
     </div>
-    <div class="row">
-      <%= f.label "ユーザー名" %>
-      <%= f.text_field :user_name, placeholder: "ユーザー名" %>
-    </div>
-
-    <div class="row">
-      <%= f.label "コメント" %>
-      <%= f.text_field :profile %>
+    <div class="form-group">
+      <%= f.label "＊ユーザー名", class: "col-3" %>
+      <%= f.text_field :user_name, placeholder: "ユーザー名", class: "col-5" %>
     </div>
 
-    <div class="row">
-      <%= f.label "Cカードランク" %>
-      <%= f.select :rank, User.ranks.keys %>
+    <div class="form-group">
+      <%= f.label "コメント", class: "col-3" %>
+      <%= f.text_field :profile, class: "col-5" %>
     </div>
 
-    <div class="row">
-      <%= f.submit "編集する" %>
+    <div class="form-group">
+      <%= f.label "Cカードランク", class: "col-3" %>
+      <%= f.select :rank, User.ranks.keys.map {|k| [I18n.t("enums.user.rank.#{k}"), k]}, class: "col-5" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "編集する", class: "btn btn-outline-success offset-4" %>
     </div>
   <% end %>
+
+  <div class="row">
+    <%= link_to "メールアドレス・パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-outline-info" %>
+  </div>
+  <br>
+  <div class="row">
+    <%= link_to "退会を希望される方はこちら", unsubscribe_users_path, class: "btn btn-outline-dark" %>
+  </div>
 </div>
 
 
-<%= link_to "メールアドレス・パスワードの変更はこちら", edit_user_registration_path %>
+
 
 
 
