@@ -1,7 +1,14 @@
 ja:
-  time:
+  date:
     formats:
       default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      short: "%y/%m/%d %H:%M"
 
   views:
     pagination:
@@ -9,3 +16,54 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       last: <i class="fas fa-angle-double-right"></i>
       next: <i class="fas fa-angle-right"></i>
+
+  activerecord:
+    models:
+      area: エリア
+      comment: コメント
+      comment_favorite: コメントいいね
+      spot: スポット
+      spot_favorite: スポットいいね
+
+    attributes:
+      user:
+        user_name: ユーザー名
+        profile: プロフィール
+        rank: Cカードランク
+        is_active: 登録中会員
+
+      spot:
+        area: エリア
+        caption: 説明
+        has_beach: ビーチポイント
+        has_boat: ボートポイント
+        for_beginners: 初心者
+        latitude: 緯度
+        longtitude: 経度
+        image: イメージ画像
+        onsen: 温泉情報
+        is_active: 掲載
+
+      comment:
+        user: ユーザー名
+        spot: スポット名
+        title: タイトル
+        comment: コメント本文
+        image: 画像
+
+  attributes:
+    id: ID番号
+    name: 名前
+    created_at: 作成日
+    updated_at: 更新日
+
+  enums:
+    user:
+      rank:
+        non_diver: "未登録"
+        OW: OW
+        AOW: AOW
+        RD: RD
+        MSD: MSD
+        DM: DM
+        IA: IA
