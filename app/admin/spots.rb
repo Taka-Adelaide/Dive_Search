@@ -15,4 +15,5 @@ ActiveAdmin.register Spot do
   #   permitted
   # end
 
+  
 end
