@@ -1,14 +1,20 @@
 <% @comments.each do |comment| %>
-  <div class="card mb-3">
+  <div class="card round-imp mb-3">
     <div class="row">
       <div class=" col-2 my-auto">
-        <%= attachment_image_tag comment, :image, :fill, 20, 20, fallback: "no_image.jpg" %>
+        <%= attachment_image_tag comment, :image, :fill, 100, 90, fallback: "no_image.jpg" %>
       </div>
       <div class="col-6">
+        <div class="text-sub border-bottom"><%= comment.title %></div>
         <div class=""><%= comment.comment %></div>
       </div>
       <div class="col-2 my-auto">
-        <div class=""><i class="fas fa-map-marker-alt"></i><%= comment.spot.name %></div>
+        <div class="">
+          <i class="fas fa-map-marker-alt"></i>
+          <%= link_to spot_path(comment.spot.id) do %>
+            <%= comment.spot.name %>
+          <% end %>
+        </div>
         <div class="">♥<%= comment.comment_favorites.count %>いいね</div>
       </div>
       <div class="col-2 my-auto"><%= link_to "詳細", spot_comment_path(comment.spot.id, comment.id), class: "btn btn-outline-success" %></div>

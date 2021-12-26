@@ -20,7 +20,7 @@
         </tr>
         <tr class="border-imp">
           <td class="col-5">Cカードランク</td>
-          <td class="col-5"><%= @user.rank %></td>
+          <td class="col-5"><%= @user.rank_i18n %></td>
         </tr>
       </table>
       <div>
@@ -30,6 +30,9 @@
     <div class="col-7">
       <h5 class="text-imp">口コミ一覧</h5>
       <%= render "comments/index_small", comments: @comments %>
+      <div class="d-flex justify-content-center">
+        <%= paginate @comments %>
+      </div>
     </div>
   </div>
 </div>

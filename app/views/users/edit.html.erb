@@ -21,14 +21,14 @@
 
     <div class="form-group">
       <%= f.label "Cカードランク", class: "col-3" %>
-      <%= f.select :rank, User.ranks.keys, class: "col-5" %>
+      <%= f.select :rank, User.ranks.keys.map {|k| [I18n.t("enums.user.rank.#{k}"), k]}, class: "col-5" %>
     </div>
 
     <div class="form-group">
       <%= f.submit "編集する", class: "btn btn-outline-success offset-4" %>
     </div>
   <% end %>
-  
+
   <div class="row">
     <%= link_to "メールアドレス・パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-outline-info" %>
   </div>

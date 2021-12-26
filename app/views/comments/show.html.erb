@@ -9,11 +9,12 @@
     </div>
   </div>
 
-  <div class="row border py-2">
+  <div class="row round-imp py-2">
     <div class="col-2">
       <%= attachment_image_tag @comment, :image, :fill, 160, 140, fallback: "no_image.jpg" %>
     </div>
     <div class="col-6">
+      <h6 class="text-sub border-bottom"><strong><%= @comment.title %></strong></h6>
       <div class=""><%= @comment.comment %></div>
     </div>
     <div class="col-2 my-auto">
@@ -31,7 +32,7 @@
       <div class=""><%= @comment.created_at %></div>
     </div>
     <div class="col-1 my-auto">
-      <% if @comment.user_id == current_user %>
+      <% if user_signed_in? && @comment.user_id == current_user.id %>
         <%= link_to "編集", edit_spot_comment_path(spot_id: @spot, id: @comment), class: "btn btn-outline-success" %>
       <% end %>
     </div>

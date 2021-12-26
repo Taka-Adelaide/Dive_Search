@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
 
   attachment :image
 
+  validates :title, presence: true
   validates :comment, presence: true
 
   def favorited_by?(current_user)
