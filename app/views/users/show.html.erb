@@ -3,31 +3,31 @@
     <h2><%= @user.user_name %>さんのマイページ</h2>
   </div>
   <div class="row">
-    <div class="col-5">
+    <div class="col-md-5">
       <h5 class="text-imp">ユーザー詳細</h5>
       <table>
         <tr class="border-imp">
-          <td class="col-5">ユーザー名</td>
-          <td class="col-5"><%= @user.user_name %></td>
+          <td class="col-md-5">ユーザー名</td>
+          <td class="col-md-5"><%= @user.user_name %></td>
         </tr>
         <tr class="border-imp">
-          <td class="col-5">登録アドレス</td>
-          <td class="col-5"><%= @user.email %></td>
+          <td class="col-md-5">登録アドレス</td>
+          <td class="col-md-5"><%= @user.email %></td>
         </tr>
         <tr class="border-imp">
-          <td class="col-5">プロフィール</td>
-          <td class="col-5"><%= @user.profile %></td>
+          <td class="col-md-5">プロフィール</td>
+          <td class="col-md-5"><%= @user.profile %></td>
         </tr>
         <tr class="border-imp">
-          <td class="col-5">Cカードランク</td>
-          <td class="col-5"><%= @user.rank_i18n %></td>
+          <td class="col-md-5">Cカードランク</td>
+          <td class="col-md-5"><%= @user.rank_i18n %></td>
         </tr>
       </table>
       <div>
-        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-outline-success mt-5 ml-3"%>
+        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-outline-success my-5 mx-3"%>
       </div>
     </div>
-    <div class="col-7">
+    <div class="col-md-7">
       <h5 class="text-imp">口コミ一覧</h5>
       <%= render "comments/index_small", comments: @comments %>
       <div class="d-flex justify-content-center">

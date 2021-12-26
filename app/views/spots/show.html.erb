@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <h3 class="col-2"><%= @spot.name %></h3>
-    <h5 class="col-2"><%= @spot.area.name %></h5>
+    <h3 class="col-md-2"><%= @spot.name %></h3>
+    <h5 class="col-md-2"><%= @spot.area.name %></h5>
 
-    <div class="col-5 offset-2">
+    <div class="col-md-5 offset-2">
       <% if user_signed_in? %>
         <div id="spot_favorite_<%= @spot.id %>">
           <%= render "spot_favorites/spot_favorite", spot: @spot %>
@@ -17,7 +17,7 @@
   </div>
 
   <div class="row content">
-    <div class="col">
+    <div class="col-md">
       <h5 class="text-imp">スポット情報</h5>
 
       <div class="row border-imp">
@@ -69,13 +69,13 @@
       </div>
 
       <div class="row caption round-imp mt-4">
-        <div class="col">
+        <div class="col-md">
           <p><%= @spot.caption %></p>
         </div>
       </div>
     </div>
 
-    <div class="col">
+    <div class="col-md">
       <div id="map"></div>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["gmap_API_key"] %>&callback=initMap" async defer></script>
       <div class="map">
