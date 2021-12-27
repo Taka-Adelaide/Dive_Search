@@ -12,19 +12,19 @@
 
   <%= form_with model: @comment, url: spot_comment_path, method: :patch, local: true do |f| %>
     <div class="form-group row">
-      <%= f.label "＊スポット名", class: "col-2" %>
+      <%= f.label "＊スポット名", class: "col-md-2" %>
       <%= f.collection_select(:spot_id, @spots, :id, :name, selected: @spot.id) %>
     </div>
     <div class="form-group row mt-3">
-      <%= f.label "＊タイトル", class: "col-2" %>
-      <%= f.text_field :title, placeholder: "タイトル", class: "col-6" %>
+      <%= f.label "＊タイトル", class: "col-md-2" %>
+      <%= f.text_field :title, placeholder: "タイトル", class: "col-md-6" %>
     </div>
     <div class="form-group row">
-      <%= f.label "＊口コミ本文", class: "col-2" %>
-      <%= f.text_area :comment, placeholder: "どんなダイビングでしたか？", class: "col-6" %>
+      <%= f.label "＊口コミ本文", class: "col-md-2" %>
+      <%= f.text_area :comment, placeholder: "どんなダイビングでしたか？", class: "col-md-6" %>
     </div>
     <div class="form-group row">
-      <%= f.label "画像", class: "col-2" %>
+      <%= f.label "画像", class: "col-md-2" %>
       <%= f.attachment_field :image %>
     </div>
     <div class="form-group row">
