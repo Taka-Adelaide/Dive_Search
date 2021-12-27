@@ -5,12 +5,9 @@ class Spot < ApplicationRecord
 
   validates :name, presence: true
   validates :caption, presence: true
-  validates :has_beach, presence: true
-  validates :has_boat, presence: true
-  validates :for_beginners, presence: true
   validates :latitude, presence: true
   validates :longtitude, presence: true
-  validates :is_active, presence: true
+ 
 
   def favorited_by?(current_user)
     spot_favorites.where(user_id: current_user.id).exists?
