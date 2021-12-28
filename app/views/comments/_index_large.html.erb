@@ -9,7 +9,7 @@
         <div class=""><%= comment.comment %></div>
       </div>
       <div class="col-2 my-auto">
-        <div class=""><i class="fas fa-user"></i><%= comment.user.name %></div>
+        <div class=""><i class="fas fa-user"></i><%= comment.user.user_name %></div>
         <div class="">
           <i class="fas fa-map-marker-alt"></i>
           <%= link_to spot_path(comment.spot.id) do %>

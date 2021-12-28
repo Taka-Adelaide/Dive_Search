@@ -41,6 +41,9 @@
   <div class="content">
     <h5>その他の口コミ・レビュー</h5>
     <%= render "comments/index_large", comments: @comments %>
+    <div class="d-flex justify-content-center">
+      <%= paginate @comments %>
+    </div>
   </div>
 
 </div>
