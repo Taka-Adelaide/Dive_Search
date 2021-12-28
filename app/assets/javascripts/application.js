@@ -10,7 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require popper
+//= require bootstrap-sprockets
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(window).on('turbolinks:load resize', function() {
+  nav_height = $('.navbar').outerHeight();
+  $('main').css('padding-top', nav_height + 'px');
+});
+

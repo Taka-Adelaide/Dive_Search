@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="title">
+    <h2><%= @user.user_name %>さんのマイページ</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <h5 class="text-imp">ユーザー詳細</h5>
+      <table>
+        <tr class="border-imp">
+          <td class="col-md-5">ユーザー名</td>
+          <td class="col-md-5"><%= @user.user_name %></td>
+        </tr>
+        <tr class="border-imp">
+          <td class="col-md-5">登録アドレス</td>
+          <td class="col-md-5"><%= @user.email %></td>
+        </tr>
+        <tr class="border-imp">
+          <td class="col-md-5">プロフィール</td>
+          <td class="col-md-5"><%= @user.profile %></td>
+        </tr>
+        <tr class="border-imp">
+          <td class="col-md-5">Cカードランク</td>
+          <td class="col-md-5"><%= @user.rank_i18n %></td>
+        </tr>
+      </table>
+      <div>
+        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-outline-success my-5 mx-3"%>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h5 class="text-imp">口コミ一覧</h5>
+      <%= render "comments/index_small", comments: @comments %>
+      <div class="d-flex justify-content-center">
+        <%= paginate @comments %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

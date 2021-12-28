@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="title">
+    <div class="row">
+      <h2 class="col">スポットを探す</h2>
+    </div>
+  </div>
+  <div class="search">
+    <h4 class="text-imp">地図から探す</h4>
+      <div id="map"></div>
+      <div class="map">
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["gmap_API_key"] %>&callback=initMap" async defer></script>
+        <style>
+          #map{
+            height: 500px;
+            /*width: 700px;*/
+          }
+        </style>
+        <script>
+          let map;
+          let marker = [];
+          let infoWindow = [];
+          let spots = gon.spots;
+
+          function initMap(){
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 35.025, lng: 139.351},
+                zoom: 9
+            });
+
+            for (let i = 0; i < spots.length; i++) {
+              let id = spots[i]['id']
+
+              markerLatLng = new google.maps.LatLng({
+                lat: spots[i]["latitude"],
+                lng: spots[i]["longtitude"]
+              });
+
+              marker[i] = new google.maps.Marker({
+                position: markerLatLng,
+                map: map
+              });
+
+              // 吹き出し表示
+              infoWindow[i] = new google.maps.InfoWindow({
+                content: `<a href="/spots/${id}">${spots[i].name}</a>`
+              });
+
+              marker[i].addListener("click", function(){
+                infoWindow[i].open(map, marker[i]);
+              });
+            }
+          }
+        </script>
+      </div>
+  </div>
+  <div class="search">
+    <h4 class="text-imp">地域から探す</h4>
+    <% @areas.each do |area| %>
+      <div class="row border-bottom">
+        <div class="col-2 text-left">><%= area.name %></div>
+        <% area.spots.each do |spot| %>
+          <div class="col-1 px-0 text-center">
+            <%= link_to spot_path(spot.id) do %>
+              <%= spot.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="search">
+    <h4 class="text-imp">キーワードで探す</h4>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <div class="form-group row">
+        <%= f.text_field :keyword, class: "col-7 ml-3" %>
+        <%= f.submit "検索", class: "btn btn-outline-success col-2 ml-2" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="search">
+    <h4 class="text-imp">最新の口コミから探す</h4>
+    <%= render "comments/index_large", comments: @comments %>
+    <div class="d-flex justify-content-center">
+      <%= paginate @comments %>
+    </div>
+  </div>
+
+</div>

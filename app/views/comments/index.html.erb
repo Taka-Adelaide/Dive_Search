@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="title">
+    <h2>全スポットコメント　一覧</h2>
+  </div>
+
+  <%= render "comments/index_large", comments: @comments %>
+  <div class="d-flex justify-content-center">
+    <%= paginate @comments %>
+  </div>
+</div>
