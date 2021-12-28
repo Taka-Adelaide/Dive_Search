@@ -31,9 +31,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @user = @comment.user
     @spot = @comment.spot
-
-    # @comments = Comment.all
-    @comments = Comment.includes(:user, :spot)
+    @comments = Comment.includes(:user, :spot).page(params[:page]).reverse_order
   end
 
   def edit
