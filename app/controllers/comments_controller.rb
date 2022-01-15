@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    # @comments = Comment.all
     @comments = Comment.includes(:user, :spot).page(params[:page]).reverse_order
   end
 
@@ -25,6 +24,7 @@ class CommentsController < ApplicationController
       flash[:alert] = "コメントを入力してください"
       redirect_to new_spot_comment_path(@spot)
     end
+    
   end
 
   def show
@@ -46,12 +46,12 @@ class CommentsController < ApplicationController
 
     if @comment.update(comment_params)
       flash[:notice] = "コメントを編集しました"
-      # redirect_to user_path(current_user.id)
       redirect_to spot_comment_path(@comment)
     else
       flash[:alert] = "入力してください"
       redirect_to edit_spot_comment_path(@spot)
     end
+    
   end
 
   def destroy
@@ -65,6 +65,7 @@ class CommentsController < ApplicationController
       flash[:alert] = "コメントを削除できませんでした。もう一度試してください。"
       redirect_to edit_spot_comment_path(@spot)
     end
+    
   end
 
   private
