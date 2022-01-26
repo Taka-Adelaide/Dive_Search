@@ -4,14 +4,10 @@
     <title>DiveSearch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= include_gon %>
-
     <script src="https://kit.fontawesome.com/5990f848ba.js" crossorigin="anonymous"></script>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
@@ -64,6 +60,7 @@
         <% end %>
 
         <%= yield %>
+        
       </main>
 
       <footer class="fixed-bottom" style="background-color: #fff;">

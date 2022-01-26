@@ -51,7 +51,6 @@ class CommentsController < ApplicationController
       flash[:alert] = "入力してください"
       redirect_to edit_spot_comment_path(@spot)
     end
-    
   end
 
   def destroy
@@ -65,10 +64,10 @@ class CommentsController < ApplicationController
       flash[:alert] = "コメントを削除できませんでした。もう一度試してください。"
       redirect_to edit_spot_comment_path(@spot)
     end
-    
   end
 
   private
+  
   def comment_params
     params.require(:comment).permit(:spot_id, :title, :comment, :image)
   end

@@ -1,10 +1,10 @@
 <div class="container">
   <h4>"<%= @keyword %>"の検索結果</h4>
+  <div class="col-2">
     <% @spots.each do |spot| %>
       <%= link_to spot_path(spot) do %>
-        <%= spot.name %>
+        <h5><%= spot.name %></h5>
       <% end %>
     <% end %>
+  </div>
 </div>
-
-
