@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    # @comments = @user.comments.all
     @comments = @user.comments.includes(:spot).page(params[:page]).reverse_order
   end
 
@@ -35,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   private
+  
   def user_params
     params.require(:user).permit(:name, :user_name, :profile, :rank)
   end
